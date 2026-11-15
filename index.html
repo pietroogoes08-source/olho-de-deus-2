@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<title>OLHO DE DEUS</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080b14;color:#edf0ff;
+ font-family:Arial,sans-serif;min-height:100vh;
+}
+header{
+ padding:22px 20px;display:flex;
+ justify-content:space-between;align-items:center;
+ border-bottom:1px solid #252b40;
+}
+.logo{font-size:19px;font-weight:bold;letter-spacing:3px}
+.status{font-size:11px;color:#8dedae}
+main{max-width:700px;margin:auto;padding:24px 18px}
+.core{
+ width:155px;height:155px;margin:30px auto;
+ border-radius:50%;display:grid;place-items:center;
+ background:radial-gradient(circle,#27205c,#10152c 65%,#080b14);
+ border:1px solid #8170ff;
+ box-shadow:0 0 35px #6552ff55,inset 0 0 30px #6552ff44;
+}
+.eye{font-size:65px;color:#b7aaff;text-shadow:0 0 25px #927bff}
+h1{text-align:center;font-size:27px;letter-spacing:4px}
+.subtitle{text-align:center;color:#929bb8;font-size:13px}
+.panel{
+ background:#111727;border:1px solid #28314a;
+ border-radius:15px;padding:17px;margin-top:22px;
+}
+.panel h3{margin:0 0 13px;font-size:14px}
+.modules{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.module{
+ background:#171f33;border:1px solid #303b59;
+ border-radius:10px;padding:14px;font-size:12px;
+ color:#cbd0e8;
+}
+.module span{display:block;font-size:21px;margin-bottom:8px}
+#messages{min-height:65px;font-size:13px;line-height:1.6;color:#d7dcf5}
+.inputrow{display:flex;gap:8px;margin-top:14px}
+input{
+ min-width:0;flex:1;background:#080e1b;
+ border:1px solid #35405e;border-radius:10px;
+ padding:14px;color:white;font-size:14px;outline:none;
+}
+button{
+ background:#7764ff;color:white;border:0;
+ border-radius:10px;padding:0 17px;font-weight:bold;
+}
+footer{text-align:center;color:#66708c;font-size:10px;padding:35px}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="logo">OD / CORE</div>
+ <div class="status">● SISTEMA INICIALIZADO</div>
+</header>
+
+<main>
+ <div class="core"><div class="eye">◉</div></div>
+
+ <h1>OLHO DE DEUS</h1>
+ <p class="subtitle">CENTRAL DE INTELIGÊNCIA PESSOAL</p>
+
+ <section class="panel">
+  <h3>IDENTIFICAÇÃO DO SISTEMA</h3>
+  <div style="font-size:13px;color:#aeb8d6;line-height:1.8">
+   Núcleo: OD Core<br>
+   Versão: 0.1.0<br>
+   Interface: Online<br>
+   Inteligência externa: Ainda não conectada
+  </div>
+ </section>
+
+ <section class="panel">
+  <h3>MÓDULOS</h3>
+  <div class="modules">
+   <div class="module"><span>◈</span>Inteligência artificial</div>
+   <div class="module"><span>⌘</span>Central de missões</div>
+   <div class="module"><span>◉</span>Memória do sistema</div>
+   <div class="module"><span>⌕</span>Pesquisa e análise</div>
+   <div class="module"><span>⚙</span>Automações</div>
+   <div class="module"><span>◖</span>Reconhecimento de voz</div>
+  </div>
+ </section>
+
+ <section class="panel">
+  <h3>TERMINAL DE COMANDO</h3>
+  <div id="messages">Sistema pronto. Aguardando comando, senhor.</div>
+  <div class="inputrow">
+   <input id="command" placeholder="Digite um comando...">
+   <button onclick="sendCommand()">ENVIAR</button>
+  </div>
+ </section>
+</main>
+
+<footer>OLHO DE DEUS © 2026 — PROJETO EM DESENVOLVIMENTO</footer>
+
+<script>
+function sendCommand(){
+ const input=document.getElementById('command');
+ const output=document.getElementById('messages');
+ const value=input.value.trim();
+ if(!value)return;
+ output.innerHTML='<b>COMANDO RECEBIDO:</b><br>'+
+ value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))+
+ '<br><br><span style="color:#a99aff">O núcleo ainda precisa ser conectado a um modelo de IA para executar comandos.</span>';
+ input.value='';
+}
+document.getElementById('command').addEventListener('keydown',e=>{
+ if(e.key==='Enter')sendCommand();
+});
+</script>
+</body>
+</html>
